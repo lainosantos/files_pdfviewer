@@ -59,6 +59,8 @@ rebuild-pdfjs:
 	rm -rf js/vendor/pdfjs
 	rm -rf vendor/pdfjs
 	bower install
+	sed -i 's/"\.\.\/build\/pdf\.worker\.js"/null/g' vendor/pdfjs/web/app_options.js
+	read -s -n 1 -p 'Comente a linha de omissão da assinatura em vendor/pdfjs/src/core/annotation.js, procure por data.fieldType === "Sig", então precione uma tecla para continuar.'
 	cd vendor/pdfjs && npm install
 	cd vendor/pdfjs && gulp generic
 	mkdir -p js/vendor
